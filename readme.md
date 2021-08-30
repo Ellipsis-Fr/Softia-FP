@@ -9,8 +9,10 @@ Installation
 
 Fontionnalités du projet
 - La page d'accueil présente :
-  - la liste des étudiants existants à l'ouverture de la plateforme, avec possibilité de consulter l'attestation précédemment transmis
+  - la liste des étudiants existants à l'ouverture de la plateforme, avec possibilité de consulter l'attestation précédemment transmises et de la modifier
   - 2 boutons, l'un dirigeant vers un formulaire d'ajout d'un nouvel étudiant, l'autre d'envoi d'un certificat à un étudiant préalablement sélectionné
+- L'ensemble des données sont enregistrées
+
 
 Technologies utilisées :
 - C# et ASP.NET
