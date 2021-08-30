@@ -1,0 +1,64 @@
+﻿@model Softia_FP.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Accueil";
+}
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col">Convention</th>
+                    <th scope="col">Attestation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    foreach (var item in Model.List)
+                    {
+                        <tr>
+
+                            <td>@item.Key.LastName</td>
+                            <td>@item.Key.FirstName</td>
+                            <td>@item.Key.Mail</td>
+                            <td>@item.Key.Convention.Name</td>
+                            <td>
+                                @{
+                                    if (@item.Value != null)
+                                    {
+                                        <a href="../Certificat/ModifyCertificat/@item.Value.Id"><i class="far fa-file"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <span>     </span>
+                                    }
+                                }
+                            </td>
+
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row mx-auto">
+        <div class="col-1">
+            <button type="button" class="btn btn-primary m-2" onclick="window.location.href = '/Student/';">Ajouter Etudiant</button>
+        </div>
+        <div class="col-1">
+            <button type="button" class="btn btn-primary m-2" onclick="window.location.href = '/Certificat/';">Envoyer Certificat</button>
+        </div>
+    </div>
+</div>

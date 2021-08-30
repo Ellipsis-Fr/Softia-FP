@@ -1,0 +1,59 @@
+﻿@model Softia_FP.Models.Certificat
+@{
+    ViewData["Title"] = "Envoi d'un nouveau Certificat";
+}
+
+
+
+@{
+    if (Model == null)
+    {
+        using (Html.BeginForm("AddAndSendNewCertificat", "Certificat"))
+        {
+            <div class="container col-3 my-5">
+                <div class="row mx-auto my-2">
+                    @Html.DropDownList("Id", (SelectList)ViewBag.students, "Sélectionnez un étudiant", new { @class = "custom-select mr-sm-2", @id = "selectStudent", Required = true })
+                </div>
+                <div class="row mx-auto my-2">
+                    <input class="form-control" type="text" aria-label="Disabled input example" id="conventionAssociated" disabled>
+                </div>
+                <div class="row mx-auto my-2">
+                    @Html.TextArea("message", new { @class = "form-control", rows = "8", Required = true, id = "contentMail" })
+                </div>
+                <div class="row mx-auto my-2">
+                    <button type="submit" class="btn btn-primary col-3 mx-auto">Envoyer</button>
+                    <button type="reset" class="btn btn-primary col-3 mx-auto">Remise à Zéro</button>
+                    <a class="btn btn-primary col-3 mx-auto" href="/../Home/Index">Retour</a>
+                </div>
+            </div>
+        }
+
+        <script src="~/js/CertificatIndexScript.js"></script>
+    }
+    else
+    {
+        using (Html.BeginForm("ModifyCertificat", "Certificat"))
+        {
+            <div class="container col-3 my-5">
+                <div class="row mx-auto my-2">
+                    @Html.TextBoxFor(x => x.Student, new { @class = "form-control", disabled = "disabled" })
+                    @Html.HiddenFor(x => x.Student.Mail)
+                </div>
+                <div class="row mx-auto my-2">
+                    @Html.TextBoxFor(x => x.Convention.Name, new { @class = "form-control", disabled = "disabled" })
+                    @Html.HiddenFor(x => x.Convention)
+                </div>
+                <div class="row mx-auto my-2">
+                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control", rows = "8", Required = true })
+                    @Html.HiddenFor(x => x.Id)
+                </div>
+                <div class="row mx-auto my-2">
+                    <button type="submit" class="btn btn-primary col-3 mx-auto">Envoyer</button>
+                    <a class="btn btn-primary col-3 mx-auto" href="/../Home/Index">Retour</a>
+                </div>
+            </div>
+        }
+    }
+}
+
+

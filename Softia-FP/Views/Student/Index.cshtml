@@ -1,0 +1,35 @@
+﻿@model Softia_FP.Models.Student
+@{
+    ViewData["Title"] = "Ajout d'un nouveau Etudiant";
+}
+
+@using (Html.BeginForm("AddNewStudent", "Student"))
+{
+    <div class="container col-3 my-5">
+        <div class="row mx-auto my-2">
+            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", Required = true, Placeholder = "Nom" })
+        </div>
+        <div class="row mx-auto my-2">
+            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", Required = true, Placeholder = "Prenom" })
+        </div>
+        <div class="row mx-auto my-2">
+            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", Required = true, Placeholder = "Mail", Type = "email", id = "mail" })
+        </div>
+        <div class="row mx-auto my-2">
+            @Html.DropDownList("Id", (SelectList)ViewBag.conventions, "Sélectionnez une Convention", new { @class = "custom-select mr-sm-2", Required = true })
+        </div>
+        <div class="row mx-auto my-2">
+            <button type="submit" class="btn btn-primary col-3 mx-auto" id="submitBtn">Envoyer</button>
+            <button type="reset" class="btn btn-primary col-3 mx-auto" id="resetBtn">Remise à Zéro</button>
+            <a class="btn btn-primary col-3 mx-auto" href="/../Home/Index">Retour</a>
+        </div>
+    </div>
+}
+
+<div class="container col-3 my-1">
+    <div class="row mx-auto" id="contentMessageError">
+       
+    </div>
+</div>
+
+    <script src="~/js/StudentIndexScript.js"></script>
